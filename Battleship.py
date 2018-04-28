@@ -12,7 +12,7 @@ Authors:
     Miranda McCoy
     Bennie O'Neal
 '''
-Loads P1 and P2 set up boards, Loads P1 and P2 hit_boards, error checks, and has a cool light show at the end for the WINNER!import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 import threading
 
