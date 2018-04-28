@@ -1,3 +1,17 @@
+'''
+Battleship Raspberry Pi Interactive Game
+    -This game is intended to be a game of Battleship that lights an led board on a 
+     Raspberry Pi to mimmick the traditional board game.
+Hack The Ozarks
+April 27-28, 2018
+Authors:
+    Bec Braughton
+    Andrew Beers
+    Desmond Ford
+    Ben O'Neal
+    Miranda McCoy
+    Bailey Lalonde
+'''
 import numpy as np
 
 class Player:
@@ -11,57 +25,48 @@ def print_board(board):
 
 on = 1
 off = 0
+winner = False
+player_guess = False
 
 player1 = Player()
 player2 = Player()
 
-print ("Player 1 Place Ship.")
-small_ship1_row = int(raw_input("Place Row: "))
-small_ship1_col = int(raw_input("Place Column: "))
+def place_piece(board, player):
+    print (player + " Place Ship")
+    small_ship_row = int(raw_input("Place Row: "))
+    small_ship_col = int(raw_input("Place Column: "))
+    board[small_ship_row][small_ship_col] = on
 
-print ("Player 2 Place Ship.")
-small_ship2_row = int(raw_input("Place Row: "))
-small_ship2_col = int(raw_input("Place Column: "))
-
-player1.ship_board[small_ship1_row][small_ship1_col] = on
-player2.ship_board[small_ship2_row][small_ship2_col] = on
-
-print (np.matrix(player1.ship_board));
-print (np.matrix(player2.ship_board));
-
-winner = False
-while winner == False:
-    guess = False
-    while guess == False: 
+def guess(ship_board, player, hit_board):
+    global player_guess
+    global winner
+    while player_guess == False:
+        print(player = " Guess.")
         guess_row = int (raw_input("Guess Row: "))
         guess_col = int (raw_input("Guess Column: "))
-        if player2.hit_board[guess_row][guess_col] == 0:
-            if player2.ship_board[guess_row][guess_col] == on:
+        if hit_board[guess_row][guess_col] == 0:
+            if ship_board[guess_row][guess_col] == on:
                 print ("You did it!")
                 winner = True
-                guess = True
-                break
-            else: 
-                print ("Failure.")
-                player2.hit_board[guess_row][guess_col] == on
-                guess = True
-        else: 
-            print ("Already guessed that.")
-
-    guess = False
-    while guess == False:
-        guess_row = int(raw_input("Guess Row: "))
-        guess_col = int(raw_input("Guess Column: "))
-        if player1.hit_board[guess_row][guess_col] == 0:
-            if player1.ship_board[guess_row][guess_col] == on:
-                print ("You did it!")
-                winner = True
-                guess = True
+                player_guess = True
                 break
             else:
                 print ("Failure")
-                player1.hit_board[guess_row][guess_col] == on
-                guess = True
+                hit_board[guess_row][guess_col] == on
+                player_guess = True
         else: 
             print ("Already guessed that.")
 
+place_piece(player1.ship_board, "Player 1")
+place_piece(player2.ship_board, "Player 2")
+
+print (np.matrix(player1.ship_board));
+print (np.matrix(player3.ship_board));
+
+while winner == False:
+    if winner == False:
+        player_guess = False
+    guess(player2.ship_board, "Player 1", player1.hit_board)
+    if winner == False:
+        player_guess = False
+    guess(player1.ship_board, "Player 2", player2.hit_board)
