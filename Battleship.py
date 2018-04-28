@@ -61,7 +61,7 @@ player2 = Player()
 
 
 def place_piece(board, player):
-    print(player + " Place First Ship (1x3)")
+    print(player + " Place Your First Ship (1x3)")
     small_ship_row = getNumber_col3("Place Row:")
     small_ship_col = getNumber("Place Column:")
     board[small_ship_col][small_ship_row] = one
@@ -71,7 +71,7 @@ def place_piece(board, player):
 def place_piece_two(board, player):
     global placement
     placement = False
-    print(player + " Place Second Ship (1x2)")
+    print(player + " Place Your Second Ship (1x2)\n")
     while placement == False:
         small_ship_row = getNumber_col2("Place Row:")
         small_ship_col = getNumber("Place Column:")
@@ -80,12 +80,12 @@ def place_piece_two(board, player):
             board[small_ship_col][small_ship_row + 1] = two
             placement = True
         else:
-            print("Ship already there, place somewhere else.")
+            print("There's a ship already there, place it somewhere else.")
 
 def place_piece_three(board, player):
     global placement
     placement = False
-    print(player + " Place Third Ship (2x1)")
+    print(player + " Place Your Third Ship (2x1)\n")
     while placement == False:
         small_ship_row = getNumber("Place Row:")
         small_ship_col = getNumber_row2("Place Column:")
@@ -94,12 +94,12 @@ def place_piece_three(board, player):
             board[small_ship_col + 1][small_ship_row] = three
             placement = True
         else:
-            print("Ship already there, place somewhere else.")
+            print("There's a ship already there, place it somewhere else.")
 
 def place_piece_four(board, player):
     global placement
     placement = False
-    print(player + " Place Fourth Ship (3x1)")
+    print(player + " Place Your Fourth Ship (3x1)\n")
     while placement == False:
         small_ship_row = getNumber("Place Row:")
         small_ship_col = getNumber_col3("Place Column:")
@@ -109,12 +109,12 @@ def place_piece_four(board, player):
             board[small_ship_col + 2][small_ship_row] = four
             placement = True
         else:
-            print("Ship already there, place somewhere else.")
+            print("There's a ship already there, place it somewhere else.")
 
 def place_piece_five(board, player):
     global placement
     placement = False
-    print(player + " Place Fifth Ship (4x1)")
+    print(player + " Place Your Fifth Ship (4x1)\n")
     while placement == False:
         small_ship_row = getNumber("Place Row:")
         small_ship_col = getNumber_col4("Place Column:")
@@ -125,7 +125,7 @@ def place_piece_five(board, player):
             board[small_ship_col + 3][small_ship_row] = five
             placement = True
         else:
-            print("Ship already there, place somewhere else.")
+            print("There's a ship already there, place it somewhere else.")
 def getNumber(position):
     try:
         value = int(input(position + " 0-7: "))
@@ -206,117 +206,136 @@ def guess(ship_board, player, hit_board, Player):
     global winner
     while player_guess == False:
         print_board(hit_board)
-        print(player + " Guess.")
-        guess_row = getNumber("Guess Row:")
+        print ("\n" + player + " Guess.")
+        guess_row = getNumber("CALL YOUR SHOT!\nGuess Row:")
         guess_col = getNumber("Guess Column:")
         if hit_board[guess_col][guess_row] == 0:
             if ship_board[guess_col][guess_row] == one:
-                print("Hit!")
+                print("IT'S A HIT!\n")
                 hit_board[guess_col][guess_row] = 'H'
                 player_guess = False
                 Player.increment_hits_one()
                 if (Player.ship_one_hits == 3 and Player.ship_two == True and Player.ship_three == True and Player.ship_four == True and Player.ship_five == True):
-                    print("You sunk a ship!")
+                    print("YOU SUNK THEIR WHOLE FLEET!\n")
                     Player.ship_one = True
                     winner = True
                     player_guess = True
                     break
                 elif (Player.ship_one_hits == 3):
-                    print("You sunk a ship!")
+                    print("You sunk a ship!\n")
                     hit_board[guess_col][guess_row] = 'H'
                     Player.ship_one = True
                     player_guess = False
             elif ship_board[guess_col][guess_row] == two:
-                print("Hit!")
+                print("IT'S A HIT!\n")
                 hit_board[guess_col][guess_row] = 'H'
                 player_guess = False
                 Player.increment_hits()
                 if (Player.ship_two_hits == 2 and Player.ship_three == True and Player.ship_four == True and Player.ship_one == True and Player.ship_five == True):
-                    print("You sunk a ship!")
+                    print("YOU SUNK THEIR WHOLE FLEET!\n")
                     Player.ship_two = True
                     winner = True
                     player_guess = True
                     break
                 elif (Player.ship_two_hits == 2):
-                    print("You sunk a ship!")
+                    print("You sunk a ship!\n")
                     Player.ship_two = True
                     player_guess = False
             elif ship_board[guess_col][guess_row] == three:
-                print("Hit!")
+                print("IT'S A HIT!\n")
                 hit_board[guess_col][guess_row] = 'H'
                 player_guess = False
                 Player.increment_hits_two()
                 if (Player.ship_three_hits == 2 and Player.ship_two == True and Player.ship_four == True and Player.ship_one == True and Player.ship_five == True):
-                    print("You sunk a ship!")
+                    print("YOU SUNK THEIR WHOLE FLEET!\n")
                     Player.ship_three = True
                     winner = True
                     player_guess = True
                     break
                 elif (Player.ship_three_hits == 2):
-                    print("You sunk a ship!")
+                    print("You sunk a ship!\n")
                     Player.ship_three = True
                     player_guess= False
             elif ship_board[guess_col][guess_row] == four:
-                print("Hit!")
+                print("IT'S A HIT!\n")
                 hit_board[guess_col][guess_row] = 'H'
                 player_guess = False
                 Player.increment_hits_three()
                 if (Player.ship_four_hits == 3 and Player.ship_two == True and Player.ship_three == True and Player.ship_one == True and Player.ship_five == True):
-                    print("You sunk a ship!")
+                    print("YOU SUNK THEIR WHOLE FLEET!\n")
                     Player.ship_four = True
                     winner = True
                     player_guess = True
                     break
                 elif (Player.ship_four_hits == 3):
-                    print("You sunk a ship!")
+                    print("You sunk a ship!\n")
                     Player.ship_four = True
                     player_guess = False
             elif ship_board[guess_col][guess_row] == five:
-                print("Hit!")
+                print("IT'S A HIT!\n")
                 hit_board[guess_col][guess_row] = 'H'
                 player_guess = False
                 Player.increment_hits_four()
                 if (Player.ship_five_hits == 4 and Player.ship_two == True and Player.ship_three == True and Player.ship_one == True and Player.ship_four == True):
-                    print("You sunk a ship!")
+                    print("YOU SUNK THEIR WHOLE FLEET!\n")
                     Player.ship_five = True
                     winner = True
                     player_guess = True
                     break
                 elif (Player.ship_five_hits == 4):
-                    print("You sunk a ship!")
+                    print("You sunk a ship!\n")
                     Player.ship_five = True
                     player_guess = False
             else:
-                print("Miss.")
+                print("IT'S A MISS!\n")
                 hit_board[guess_col][guess_row] = 'X'
                 player_guess = True
         else:
-            print("Already guessed that.")
+            print("Already guessed that.\n")
       
-place_piece(player1.ship_board, "Player 1")
+place_piece(player1.ship_board, "\n\nPREPARE FOR BATTLE!\n\nPlayer 1")
+print ("\n")
 print_board(player1.ship_board)
+print ("\n")
 place_piece_two(player1.ship_board, "Player 1")
+print ("\n")
 print_board(player1.ship_board)
+print ("\n")
 place_piece_three(player1.ship_board, "Player 1")
+print ("\n")
 print_board(player1.ship_board)
+print ("\n")
 place_piece_four(player1.ship_board, "Player 1")
+print ("\n")
 print_board(player1.ship_board)
+print ("\n")
 place_piece_five(player1.ship_board, "Player 1")
+print ("\n")
+raw_input("Ready Player One?")
 print("\n" * 100)
 place_piece(player2.ship_board, "Player 2")
+print ("\n")
 print_board(player2.ship_board)
+print ("\n")
 place_piece_two(player2.ship_board, "Player 2")
+print ("\n")
 print_board(player2.ship_board)
+print ("\n")
 place_piece_three(player2.ship_board, "Player 2")
+print ("\n")
 print_board(player2.ship_board)
+print ("\n")
 place_piece_four(player2.ship_board, "Player 2")
+print ("\n")
 print_board(player2.ship_board)
+print ("\n")
 place_piece_five(player2.ship_board, "Player 2")
+print ("\n")
+raw_input("Ready Player Two?")
 print("\n" * 100)
 #print_board(player1.ship_board)
 #print("\n")
 #print_board(player2.ship_board)
-
 
 while winner == False:
     if winner == False:
