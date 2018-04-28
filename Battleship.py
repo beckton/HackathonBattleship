@@ -12,6 +12,20 @@ Authors:
     Miranda McCoy
     Bennie O'Neal
 '''
+'''
+Battleship Raspberry Pi Interactive Game
+    -This game is intended to be a game of Battleship that lights an led board on a 
+     Raspberry Pi to mimmick the traditional board game.
+Hack The Ozarks
+April 27-28, 2018
+Authors:
+    Andrew Beers
+    Bec Braughton
+    Desmond Ford
+    Bailey Lalonde
+    Miranda McCoy
+    Bennie O'Neal
+'''
 import RPi.GPIO as GPIO
 import time
 import threading
@@ -475,7 +489,7 @@ def guess(ship_board, player, hit_board, Player):
             else:
                 print("IT'S A MISS!")#\n
                 hit_board[guess_col][guess_row] = 'X'
-                raw_input("End Turn./nNext Player [ENTER]")
+                raw_input("End Turn.\n[ENTER]")
                 player_guess = True
         else:
             print("You already guessed that!")#\n
@@ -510,7 +524,7 @@ print ("\n")
 print ("\n")
 place_piece_five(player1.ship_board, "Player 1")
 print ("\n")
-raw_input("Ready Player One?")
+raw_input("Player One's Fleet Is Ready\n[Enter]")
 print("\n" * 100)
 player_one_turn = False
 time.sleep(.05)
@@ -534,8 +548,9 @@ print ("\n")
 print ("\n")
 place_piece_five(player2.ship_board, "Player 2")
 print ("\n")
-raw_input("Ready Player Two?")
+raw_input("Player Two's Fleet Is Ready\n[Enter]")
 print("\n" * 100)
+print("ENGAGE!\n")
 #print_board(player1.ship_board)
 #print("\n")
 #print_board(player2.ship_board)
