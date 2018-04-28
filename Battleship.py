@@ -32,30 +32,36 @@ print (np.matrix(player2.ship_board));
 winner = False
 while winner == False:
     guess = False
-    guess_row = int (raw_input("Guess Row: "))
-    guess_col = int (raw_input("Guess Column: "))
-
-    while guess == False:
-        if player2.ship_board[guess_row][guess_col] == on:
-            print ("You did it!")
-            winner = True
-            break
+    while guess == False: 
+        guess_row = int (raw_input("Guess Row: "))
+        guess_col = int (raw_input("Guess Column: "))
+        if player2.hit_board[guess_row][guess_col] == 0:
+            if player2.ship_board[guess_row][guess_col] == on:
+                print ("You did it!")
+                winner = True
+                guess = True
+                break
+            else: 
+                print ("Failure.")
+                player2.hit_board[guess_row][guess_col] == on
+                guess = True
         else: 
-            print ("Failure.")
-            player2.hit_board[guess_row][guess_col] == on
-            guess = True
-
-    guess_row = int(raw_input("Guess Row: "))
-    guess_col = int(raw_input("Guess Column: "))
+            print ("Already guessed that.")
 
     guess = False
     while guess == False:
-        if player1.ship_board[guess_row][guess_col] == on:
-            print ("You did it!")
-            winner = True
-            break
-        else:
-            print ("Failure")
-            player1.hit_board[guess_row][guess_col] == on
-            guess = True
+        guess_row = int(raw_input("Guess Row: "))
+        guess_col = int(raw_input("Guess Column: "))
+        if player1.hit_board[guess_row][guess_col] == 0:
+            if player1.ship_board[guess_row][guess_col] == on:
+                print ("You did it!")
+                winner = True
+                guess = True
+                break
+            else:
+                print ("Failure")
+                player1.hit_board[guess_row][guess_col] == on
+                guess = True
+        else: 
+            print ("Already guessed that.")
 
