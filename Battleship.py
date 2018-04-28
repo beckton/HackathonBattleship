@@ -2,7 +2,7 @@ from random import randint
 import numpy as np
 
 class Player:
-    def _init_(self):
+    def __init__(self):
         self.ship_board = [[0 for x in range(8)] for y in range(8)]
         self.hit_board = [[0 for x in range(8)] for y in range(8)]
 
