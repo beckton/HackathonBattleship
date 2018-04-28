@@ -1,4 +1,3 @@
-from random import randint
 import numpy as np
 
 class Player:
@@ -8,19 +7,55 @@ class Player:
 
 def print_board(board):
     for row in board: 
-        pring " ".join(row)
+        print (" ".join(row))
+
+on = 1
+off = 0
 
 player1 = Player()
 player2 = Player()
 
-player1.ship_board[0] [0] = 1
+print ("Player 1 Place Ship.")
+small_ship1_row = int(raw_input("Place Row: "))
+small_ship1_col = int(raw_input("Place Column: "))
 
-print (np.matrix(player1.ship_board))
+print ("Player 2 Place Ship.")
+small_ship2_row = int(raw_input("Place Row: "))
+small_ship2_col = int(raw_input("Place Column: "))
 
-guess_row = int(raw_input("Guess Row: "))
-guess_col = int(raw_input("Guess Column: "))
+player1.ship_board[small_ship1_row][small_ship1_col] = on
+player2.ship_board[small_ship2_row][small_ship2_col] = on
 
-if player1.ship_board[guess_row][guess_col] == 1:
-    print ("You did it!")
-else:
-    print ("Failure.")
+print (np.matrix(player1.ship_board));
+print (np.matrix(player2.ship_board));
+
+winner = False
+while winner == False:
+    guess = False
+    guess_row = int (raw_input("Guess Row: "))
+    guess_col = int (raw_input("Guess Column: "))
+
+    while guess == False:
+        if player2.ship_board[guess_row][guess_col] == on:
+            print ("You did it!")
+            winner = True
+            break
+        else: 
+            print ("Failure.")
+            player2.hit_board[guess_row][guess_col] == on
+            guess = True
+
+    guess_row = int(raw_input("Guess Row: "))
+    guess_col = int(raw_input("Guess Column: "))
+
+    guess = False
+    while guess == False:
+        if player1.ship_board[guess_row][guess_col] == on:
+            print ("You did it!")
+            winner = True
+            break
+        else:
+            print ("Failure")
+            player1.hit_board[guess_row][guess_col] == on
+            guess = True
+
