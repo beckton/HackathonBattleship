@@ -10,7 +10,7 @@ Authors:
     Desmond Ford
     Bailey Lalonde
     Miranda McCoy
-    Ben O'Neal
+    Bennie O'Neal
 '''
 class Player:
         def __init__(self):
